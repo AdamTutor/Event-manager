@@ -40,11 +40,38 @@ def registerEvent(t1, t2, dt, type):
     """
     DB = connect()
     cursor = DB.cursor()
-    cursor.execute("INSERT INTO events (team1, team2, datetime, type) VALUES (t1,t2,dt,type);")
+    cursor.execute("INSERT INTO events (team1, team2, datetime, type) VALUES ( %s , %s , %s , %s );",
+    (t1, t2, dt, type))
     DB.commit()
     DB.close()
 
+def registerTeam(name):
+    """Adds a new team to the database."""
+    DB = connect()
+    cursor = DB.cursor()
+    cursor.execute("INSERT INTO teams (name) VALUES (%s);",
+    (name,))
+    DB.commit()
+    DB.close()
 
+def allEvents():
+    DB = connect()
+    cursor = DB.cursor()
+    cursor.execute("SELECT * FROM events;")
+    events = cursor.fetchall()
+    DB.commit()
+    DB.close()
+    print(events)
+    return events
 
-
-registerEvent('blue', 'red', '20120618 10:34:09 AM', 'arcade night')
+def allTeams():
+    DB = connect()
+    cursor = DB.cursor()
+    cursor.execute("SELECT * FROM teams;")
+    teams = cursor.fetchall()
+    DB.commit()
+    DB.close()
+    print(teams)
+    return teams
+allEvents()
+allTeams()

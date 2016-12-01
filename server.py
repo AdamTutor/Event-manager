@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 import db
 
 
@@ -6,12 +6,12 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def root():
-    return ....
+def index():
+    return render_template("index.html")
 
-@app.route("/something")
-def something():
-    return ....
+# @app.route("/something")
+# def something():
+#     return ....
 
 @app.route("/api/events/")
 def events_list():
