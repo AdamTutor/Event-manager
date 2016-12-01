@@ -3,7 +3,7 @@ import psycopg2
 
 def connect():
     """Connect to the PostgreSQL database.  Returns a database connection."""
-    return psycopg2.connect("dbname=Schedule")
+    return psycopg2.connect("dbname=schedule")
 
 def deleteEvents():
     """Remove all the events from the database."""
@@ -14,7 +14,7 @@ def deleteEvents():
     DB.close()
 
 def deleteTeams():
-    """delete teams from teams table in database""""
+    """delete teams from teams table in database"""
     DB = connect()
     cursor = DB.cursor()
     cursor.execute("DELETE FROM teams;");
@@ -40,6 +40,11 @@ def registerEvent(t1, t2, dt, type):
     """
     DB = connect()
     cursor = DB.cursor()
-    cursor.execute("INSERT INTO events (t1, t2, ) VALUES (%s);", (name,))
+    cursor.execute("INSERT INTO events (team1, team2, datetime, type) VALUES (t1,t2,dt,type);")
     DB.commit()
     DB.close()
+
+
+
+
+registerEvent('blue', 'red', '20120618 10:34:09 AM', 'arcade night')
