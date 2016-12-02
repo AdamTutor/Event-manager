@@ -12,6 +12,7 @@ def deleteEvents():
     cursor.execute("DELETE FROM events;");
     DB.commit()
     DB.close()
+    print("all Events deleted")
 
 def deleteTeams():
     """delete teams from teams table in database"""
@@ -20,6 +21,7 @@ def deleteTeams():
     cursor.execute("DELETE FROM teams;");
     DB.commit()
     DB.close()
+    print("all teams deleted")
 
 def countEvents():
     """Returns the number of events currently registered."""
@@ -44,6 +46,7 @@ def registerEvent(t1, t2, dt, type):
     (t1, t2, dt, type))
     DB.commit()
     DB.close()
+    print("Event",type,"added")
 
 def registerTeam(name):
     """Adds a new team to the database."""
@@ -53,15 +56,17 @@ def registerTeam(name):
     (name,))
     DB.commit()
     DB.close()
+    print("Team",name,"added")
 
 def allEvents():
     DB = connect()
     cursor = DB.cursor()
-    cursor.execute("SELECT * FROM events;")
+    cursor.execute("""SELECT t1.name, t2.name, e.datetime, e.type FROM events e
+                      JOIN teams t1 on t1.id = e.team1
+                      JOIN teams t2 on t2.id = e.team2;""")
     events = cursor.fetchall()
     DB.commit()
     DB.close()
-    print(events)
     return events
 
 def allTeams():
@@ -71,7 +76,24 @@ def allTeams():
     teams = cursor.fetchall()
     DB.commit()
     DB.close()
-    print(teams)
     return teams
-allEvents()
-allTeams()
+
+# def schedule():
+#     Teams_in_events = []
+#     DB = connect()
+#     cursor = DB.cursor()
+#     events = allEvents()
+#     for event in events:
+#         cursor.execute("SELECT team1, team2 FROM events;")
+#         teams = cursor.fetchall()
+#         Teams_in_events.append(teams)
+#     for Id in Teams_in_events:
+#         cursor.execute("SELECT name FROM teams WHERE id IN(%s);",(Teams_in_events[0][0]))
+#         x = cursoe.fetchall()
+#         DB.commit()
+#         DB.close()
+#     return x
+#
+#
+# x = schedule()
+# print(x)

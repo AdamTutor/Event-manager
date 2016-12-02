@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Schedule</title>
+</head>
+<body>
+  <ul>
+   {% for team in teams %}
+       <li>{{ team }}</li>
+   {% endfor %}
+   </ul>
+<table>
+  <thead>
+    <th>
+      <td>time</td>
+      <td>Event</td>
+      <td>Team1</td>
+      <td>Team2</td>
+    </th>
+  </thead>
+  <tbody>
+    {% for team in teams %}
+      <tr>
+       <td>{{ team[0] }}</td>
+       <td>{{ team[1] }}</td>
+       <td>{{ team[2] }}</td>
+       <td>{{ team[3] }}</td>
+       <td>{{ team[4] }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+</body>
+
+</html>
