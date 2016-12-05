@@ -1,37 +1,39 @@
 <!DOCTYPE>
 <html>
-<head>
-  <title>Schedule</title>
-  <link rel="stylesheet" type="text/css" href="templates/schedule.css">
-</head>
-<body>
-  <ul>
-  <li><a href="/">Schedule</a></li>
-  <li><a href="/teams/">Teams</a></li>
-  <li><a href="/create/">Create</a></li>
 
-</ul>
-<table>
-  <thead>
-    <tr>
-      <th>Team1</th>
-      <th>Team2</th>
-      <th>Time</th>
-      <th>Event Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for event in events %}
-      <tr>
-       <th>{{ event[0] }}</th>
-       <td>{{ event[1] }}</td>
-       <td>{{ event[2] }}</td>
-       <td>{{ event[3] }}</td>
-       <td>{{ event[4] }}</td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<head>
+    <title>Schedule</title>
+    <link rel="stylesheet" type="text/css" href="static/schedule.css">
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Schedule</a></li>
+        <li><a href="/teams/">Teams</a></li>
+        <li><a href="/teams/new/">Register Team</a></li>
+          <li><a href="/events/new/">Register Event</a></li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Team1</th>
+                <th>Team2</th>
+                <th>Time</th>
+                <th>Event Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <th>{{ event[0] }}</th>
+                <td>{{ event[1] }}</td>
+                <td>{{ event[2] }}</td>
+                <td>{{ event[3] }}</td>
+                <td>{{ event[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 
 

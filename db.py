@@ -78,23 +78,3 @@ def allTeams():
     DB.commit()
     DB.close()
     return teams
-
-# def schedule():
-#     Teams_in_events = []
-#     DB = connect()
-#     cursor = DB.cursor()
-#     events = allEvents()
-#     for event in events:
-#         cursor.execute("SELECT team1, team2 FROM events;")
-#         teams = cursor.fetchall()
-#         Teams_in_events.append(teams)
-#     for Id in Teams_in_events:
-#         cursor.execute("SELECT name FROM teams WHERE id IN(%s);",(Teams_in_events[0][0]))
-#         x = cursoe.fetchall()
-#         DB.commit()
-#         DB.close()
-#     return x
-#
-#
-# x = schedule()
-# print(x)

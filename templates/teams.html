@@ -1,13 +1,28 @@
 <html>
+
 <head>
-  <title>Teams</title>
-  <link rel="stylesheet" type="text/css" href="schedule.css">
+    <title>Teams</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='schedule.css') }}">
 </head>
+
 <body>
-  <ul>
-  <li><a href="/">Schedule</a></li>
-  <li><a href="/teams/">Teams</a></li>
-  <li><a href="/create/">Create</a></li>
-</ul>
+    <ul>
+        <li><a href="/">Schedule</a></li>
+        <li><a href="/teams/">Teams</a></li>
+        <li><a href="/teams/new/">register Team</a></li>
+        <li><a href="/teams/new/">register Event</a></li>
+    </ul>
+    <table>
+      <tr>
+        <th>
+          Current registered teams
+        </th>
+      </tr>
+    </table>
+    {% for team in teams %}
+    <p>{{ team[1] }}</p>
+    {% endfor %}
+
 </body>
+
 </html>

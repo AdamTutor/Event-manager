@@ -2,8 +2,7 @@
 <html>
 
 <head>
-    <title>Register Team</title>
-    <!-- <link rel="stylesheet" type="text/css" href="static/schedule.css"> -->
+    <title>Create Event</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='schedule.css') }}">
 </head>
 
@@ -11,12 +10,14 @@
     <ul>
         <li><a href="/">Schedule</a></li>
         <li><a href="/teams/">Teams</a></li>
-        <li><a href="/teams/new/">Register Team</a></li>
-          <li><a href="/events/new/">Register Event</a></li>
+        <li><a href="/teams/new/">registerEvent</a></li>
     </ul>
 <form action="/teams/" method="post">
-  <input name="team-name"/>
-  <button type="submit">Create Team</button>
+  <input name="team1-id"/>
+  <input name="team2-id"/>
+  <input name="datetime" type="datetime"/>
+  <input name="type"/>
+  <button type="submit">Create Event</button>
   </form>
 </body>
 
