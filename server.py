@@ -6,17 +6,16 @@ import db
 app = Flask(__name__)
 @app.route("/")
 def index():
-    return render_template("schedule.html")
+    return render_template("schedule.html", events=db.allEvents())
+
+@app.route("/create/")
+def create():
+    return render_template("create.html")
 
 @app.route("/teams/")
 def teams():
-    teams = db.allTeams()
-    print(teams)
-    return render_template("schedule.html", teams=db.allEvents())
+    return render_template("teams.html", )
 
-# @app.route("/something")
-# def something():
-#     return ....
 
 if __name__ == "__main__":
     app.run()

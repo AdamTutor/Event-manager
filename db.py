@@ -63,7 +63,8 @@ def allEvents():
     cursor = DB.cursor()
     cursor.execute("""SELECT t1.name, t2.name, e.datetime, e.type FROM events e
                       JOIN teams t1 on t1.id = e.team1
-                      JOIN teams t2 on t2.id = e.team2;""")
+                      JOIN teams t2 on t2.id = e.team2
+                      ORDER BY datetime ;""")
     events = cursor.fetchall()
     DB.commit()
     DB.close()
