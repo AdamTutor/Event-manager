@@ -9,20 +9,25 @@
     <ul>
         <li><a href="/">Schedule</a></li>
         <li><a href="/teams/">Teams</a></li>
-        <li><a href="/teams/new/">register Team</a></li>
-        <li><a href="/teams/new/">register Event</a></li>
+        <li><a href="/teams/new/">Register Team</a></li>
+        <li><a href="/teams/new/">Register Event</a></li>
     </ul>
     <table>
-      <tr>
-        <th>
-          Current registered teams
-        </th>
-      </tr>
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Team ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in teams %}
+            <tr>
+                <th>{{ team[1] }}</th>
+                <td>{{ team[0] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-    {% for team in teams %}
-    <p>{{ team[1] }}</p>
-    {% endfor %}
-
 </body>
 
 </html>

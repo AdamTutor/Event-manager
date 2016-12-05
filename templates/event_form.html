@@ -10,13 +10,14 @@
     <ul>
         <li><a href="/">Schedule</a></li>
         <li><a href="/teams/">Teams</a></li>
-        <li><a href="/teams/new/">registerEvent</a></li>
+        <li><a href="/teams/new/">Register Team</a></li>
+        <li><a href="/teams/new/">Register Event</a></li>
     </ul>
-<form action="/teams/" method="post">
-  <input name="team1-id"/>
-  <input name="team2-id"/>
-  <input name="datetime" type="datetime"/>
-  <input name="type"/>
+<form action="/" method="post">
+  Team 1 ID <input name="team1-id"/> <br />
+  Team 2 ID <input name="team2-id"/><br />
+  Date  Time <input name="datetime" type="datetime"/><br />
+  Event Type<input name="type"/>
   <button type="submit">Create Event</button>
   </form>
 </body>

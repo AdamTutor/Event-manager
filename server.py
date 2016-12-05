@@ -4,16 +4,19 @@ import db
 
 
 app = Flask(__name__)
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-    return render_template("schedule.html", events=db.allEvents())
+    if request.method == "GET":
+        return render_template("schedule.html", events=db.allEvents())
+    else:
+        db.registerEvent(request.form['team1-id'],request.form['team2-id'],request.form['datetime'],request.form['type'])
+        return redirect("/")
 
 @app.route("/teams/", methods=["GET", "POST"])
 def teams():
     if request.method == "GET":
         return render_template("teams.html", teams=db.allTeams())
     else:
-        # do stuff with form data
         db.registerTeam(request.form['team-name'])
         return redirect("/teams/")
 
