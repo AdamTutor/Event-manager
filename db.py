@@ -32,6 +32,15 @@ def countEvents():
     DB.close()
     return result
 
+
+def countTeams():
+    DB = connect()
+    cursor = DB.cursor()
+    cursor.execute("SELECT count(*) as num FROM teams;")
+    result = int(cursor.fetchone()[0])
+    DB.close()
+    return result
+
 def registerEvent(t1, t2, dt, type):
     """Adds a new event to the Schedule database.
 
@@ -57,6 +66,14 @@ def registerTeam(name):
     DB.commit()
     DB.close()
     print("Team",name,"added")
+    DB = connect()
+    cursor = DB.cursor()
+    cursor.execute("SELECT id FROM teams WHERE name = %s;",(name,))
+    ans = cursor.fetchone()[0]
+    DB.commit()
+    DB.close()
+    print(ans)
+    return ans
 
 def allEvents():
     DB = connect()
@@ -77,4 +94,6 @@ def allTeams():
     teams = cursor.fetchall()
     DB.commit()
     DB.close()
-    return teams
+deleteTeams()
+registerTeam('orange')
+registerTeam('yellow')
